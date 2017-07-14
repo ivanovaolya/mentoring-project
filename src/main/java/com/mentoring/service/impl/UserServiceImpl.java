@@ -6,6 +6,7 @@ import javax.transaction.Transactional;
 
 import com.google.common.base.Objects;
 import com.google.common.base.Preconditions;
+import com.google.common.collect.Lists;
 import com.mentoring.domain.entity.User;
 import com.mentoring.domain.repository.UserRepository;
 import com.mentoring.service.UserService;
@@ -32,23 +33,23 @@ public class UserServiceImpl implements UserService {
     @Override
     @Transactional
     public User update(final User user) {
-        return userRepository.update(user);
+        return userRepository.save(user);
     }
 
     @Override
     @Transactional
     public void remove(final User user) {
-        userRepository.remove(user);
+        userRepository.delete(user);
     }
 
     @Override
     public List<User> findAll() {
-        return userRepository.findAll();
+        return Lists.newArrayList(userRepository.findAll());
     }
 
     @Override
     public User findByPk(final Long pk) {
-        return userRepository.findByPk(pk);
+        return userRepository.findOne(pk);
     }
 
     @Override
