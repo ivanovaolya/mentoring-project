@@ -1,4 +1,4 @@
-package com.mentoring.web.dto;
+package com.mentoring.web.dto.user;
 
 import lombok.Data;
 import lombok.Getter;
@@ -13,7 +13,7 @@ import javax.validation.constraints.Size;
  */
 @Data
 @Getter
-public class RegistrationDto {
+public class RegistrationDto implements GenericUserDto {
 
     @NotNull
     @Pattern(regexp = "(?i)^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,6}$")

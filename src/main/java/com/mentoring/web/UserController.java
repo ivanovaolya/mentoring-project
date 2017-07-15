@@ -5,13 +5,15 @@ import java.util.List;
 import javax.validation.Valid;
 
 import com.mentoring.domain.entity.User;
-import com.mentoring.web.dto.RegistrationDto;
+import com.mentoring.web.converter.Converter;
+import com.mentoring.web.dto.user.GenericUserDto;
+import com.mentoring.web.dto.user.RegistrationDto;
 import com.mentoring.service.UserService;
+import com.mentoring.web.dto.user.UserDto;
 import com.mentoring.web.exception.DuplicateEmailException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -31,6 +33,9 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private Converter<User, GenericUserDto> userConverter;
+
     @PostMapping("/register")
     @ResponseStatus(value = HttpStatus.CREATED, reason = "User created.")
     public void register(@RequestBody @Valid RegistrationDto registrationDto) throws DuplicateEmailException {
@@ -40,7 +45,7 @@ public class UserController {
         if (userService.isEmailExist(registrationDto.getEmail())) {
             throw new DuplicateEmailException("Email is already exists");
         }
-        userService.save(convertToEntity(registrationDto));
+        userService.save(userConverter.convertToEntity(registrationDto));
     }
 
     @GetMapping()
@@ -52,10 +57,4 @@ public class UserController {
         return StringUtils.equals(dto.getPassword(), dto.getConfirmPassword());
     }
 
-    private User convertToEntity(final RegistrationDto dto) {
-        User user = new User();
-        user.setEmail(dto.getEmail());
-        user.setPassword(dto.getPassword());
-        return user;
-    }
 }
