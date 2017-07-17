@@ -10,4 +10,6 @@ public interface Converter<T, V> {
 
     V convertToDto(T entity);
 
+    T update(T currentEntity, V dto);
+
 }

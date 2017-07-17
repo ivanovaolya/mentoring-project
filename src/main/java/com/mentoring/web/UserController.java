@@ -1,26 +1,21 @@
 package com.mentoring.web;
 
-import java.util.List;
-
-import javax.validation.Valid;
-
+import com.google.common.collect.Lists;
 import com.mentoring.domain.entity.User;
+import com.mentoring.service.UserService;
 import com.mentoring.web.converter.Converter;
 import com.mentoring.web.dto.user.GenericUserDto;
 import com.mentoring.web.dto.user.RegistrationDto;
-import com.mentoring.service.UserService;
 import com.mentoring.web.dto.user.UserDto;
 import com.mentoring.web.exception.DuplicateEmailException;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.thymeleaf.util.StringUtils;
+
+import javax.validation.Valid;
+import java.util.List;
+import java.util.Objects;
 
 /**
  * @author ivanovaolyaa
@@ -48,9 +43,28 @@ public class UserController {
         userService.save(userConverter.convertToEntity(registrationDto));
     }
 
+    @PostMapping("{email}/update")
+    @ResponseStatus(value = HttpStatus.CREATED, reason = "User profile updated.")
+    public void updateProfile(@RequestBody @Valid UserDto userDto, @PathVariable("email") String email) {
+        User user = userService.findUserByEmail(email);
+        if (Objects.nonNull(user)) {
+            User updatedUser = userConverter.update(user, userDto);
+            userService.save(updatedUser);
+        } else {
+            throw new IllegalArgumentException("User is not exists");
+        }
+    }
+
     @GetMapping()
-    public List<User> getAllUsers() {
-        return userService.findAll();
+    public List<UserDto> getAllUsers() {
+        List<UserDto> list = Lists.newArrayList();
+        List<User> users = userService.findAll();
+
+        for (User u: users) {
+            list.add((UserDto) userConverter.convertToDto(u));
+        }
+
+        return list;
     }
 
     private boolean isPasswordConfirmed(final RegistrationDto dto) {
