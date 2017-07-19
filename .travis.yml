@@ -1,0 +1,9 @@
+language: java
+
+branches:
+  only:
+  - master
+  - /^feature-.*$/
+  
+jdk:
+  - oraclejdk8
