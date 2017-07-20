@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/ivanovaolya/mentoring-project.svg?branch=master)](https://travis-ci.org/ivanovaolya/mentoring-project)
 # mentoring-project
 This is educational project.
 The goal is to create a simple Java RESTful Web application and build it using [Gradle](https://gradle.org/).
