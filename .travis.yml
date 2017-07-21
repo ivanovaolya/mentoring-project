@@ -29,3 +29,4 @@ deploy:
   provider: heroku
   api_key:
     secure: "64bd3590-3816-43cc-ab28-fd8c58b57988"
+  on: feature-03-CI-CD
