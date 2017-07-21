@@ -28,5 +28,5 @@ notifications:
 deploy:
   provider: heroku
   api_key:
-    secure: "64bd3590-3816-43cc-ab28-fd8c58b57988"
+    secure: "daa566b5-b7cf-4071-aa30-ce16b6df814e"
   on: feature-03-CI-CD
