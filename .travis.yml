@@ -27,6 +27,7 @@ notifications:
 
 deploy:
   provider: heroku
+  app: mentoring-project-deployment
   api_key:
     secure: "daa566b5-b7cf-4071-aa30-ce16b6df814e"
   on: feature-03-CI-CD
