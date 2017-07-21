@@ -24,3 +24,8 @@ cache:
 notifications:
   email:
     on_success: never # default: change
+
+deploy:
+  provider: heroku
+  api_key:
+    secure: "64bd3590-3816-43cc-ab28-fd8c58b57988"
