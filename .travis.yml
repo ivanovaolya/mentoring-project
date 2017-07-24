@@ -27,6 +27,7 @@ notifications:
 
 deploy:
   provider: heroku
+  buildpack: gradle
   app: mentoring-project-deployment
   api_key:
     secure: "171779ca-a425-484f-8951-d1846711e21b"
