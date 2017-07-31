@@ -24,3 +24,11 @@ cache:
 notifications:
   email:
     on_success: never # default: change
+
+deploy:
+  provider: heroku
+  buildpack: gradle
+  app: mentoring-project-deployment
+  api_key:
+    secure: "171779ca-a425-484f-8951-d1846711e21b"
+  on: feature-03-CI-CD
