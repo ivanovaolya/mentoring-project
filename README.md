@@ -6,8 +6,12 @@ Provided deployment capabilities of web applications with spring-boot-starter-to
 ## Build
 * Mac OS ```./gradlew build```
 * Windows ```gradlew build ```
-## Deploy
+## Run
 * Mac OS ```./gradlew bootRun```
 * Windows ```gradlew bootRun ```
+## Deploy
+Deployed a Spring Boot application from GitHub to Heroku.
+Used CleanDB addon for MySql data source.
+App can be found [here](https://mentoring-project-deployment.herokuapp.com/).
 ## API
 You can find API description [here](https://docs.google.com/document/d/1dKUM0iGB4FFoUVxq_iyX7xAUwxa3ZV9clEnSQX88zaw/edit?usp=sharing)
