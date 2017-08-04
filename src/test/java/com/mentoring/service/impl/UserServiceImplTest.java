@@ -11,7 +11,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.springframework.test.context.junit4.SpringRunner;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -25,7 +25,7 @@ import static org.mockito.Mockito.when;
  * @author ivanovaolyaa
  * @version 8/2/2017
  */
-@RunWith(MockitoJUnitRunner.class)
+@RunWith(SpringRunner.class)
 public class UserServiceImplTest {
 
     private final String USER_EMAIL = "olya.ivanova@gmail.com";
