@@ -1,5 +1,9 @@
 language: java
 
+env:
+  - CI_NAME=travis-ci
+  - COVERALLS_REPO_TOKEN=wXvRA0HVhtk1KptL53nSwbDs3cmidVcqY
+
 branches:
   only:
   - master
@@ -32,3 +36,6 @@ deploy:
   api_key:
     secure: "171779ca-a425-484f-8951-d1846711e21b"
   on: master
+
+after_success:
+- ./gradlew jacocoTestReport coveralls
