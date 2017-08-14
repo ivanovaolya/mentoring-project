@@ -27,4 +27,7 @@ public class RegistrationDto implements GenericUserDto {
     @Size(min = 6, max = 30)
     private String confirmPassword;
 
+    @NotNull
+    private String role;
+
 }
