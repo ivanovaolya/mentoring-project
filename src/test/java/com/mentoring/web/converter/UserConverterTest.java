@@ -8,6 +8,7 @@ import com.mentoring.domain.entity.Phone;
 import com.mentoring.domain.entity.User;
 import com.mentoring.web.dto.user.UserDto;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
