@@ -116,6 +116,7 @@ public class UserControllerTest {
 
         mockMvc.perform(requestBuilder).andExpect(status().is(HttpStatus.CREATED.value()));
         verify(userService).save(user);
+        verify(roleService).findByRoleName(dto.getRole());
     }
 
     @Test
@@ -132,6 +133,7 @@ public class UserControllerTest {
 
         mockMvc.perform(requestBuilder).andExpect(status().is(HttpStatus.BAD_REQUEST.value()));
         verify(userService, never()).save(any(User.class));
+        verify(roleService, never()).findByRoleName(dto.getRole());
     }
 
     @Test
@@ -149,6 +151,7 @@ public class UserControllerTest {
 
         mockMvc.perform(requestBuilder).andExpect(status().is(HttpStatus.BAD_REQUEST.value()));
         verify(userService, never()).save(any(User.class));
+        verify(roleService, never()).findByRoleName(dto.getRole());
     }
 
     @Test
