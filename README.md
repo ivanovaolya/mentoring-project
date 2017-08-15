@@ -1,5 +1,5 @@
 [![Build Status](https://travis-ci.org/ivanovaolya/mentoring-project.svg?branch=master)](https://travis-ci.org/ivanovaolya/mentoring-project)
-[![Coverage Status](https://coveralls.io/repos/github/ivanovaolya/mentoring-project/badge.svg?branch=master)](https://coveralls.io/github/ivanovaolya/mentoring-project?branch=master)
+[![Coverage Status](https://coveralls.io/repos/github/ivanovaolya/mentoring-project/badge.svg)](https://coveralls.io/github/ivanovaolya/mentoring-project)
 # mentoring-project
 This is educational project.
 The goal is to create a simple Java RESTful Web application and build it using [Gradle](https://gradle.org/).
