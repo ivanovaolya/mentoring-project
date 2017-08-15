@@ -1,13 +1,17 @@
 package com.mentoring.web.converter;
 
 import java.util.List;
+import java.util.Set;
 
 import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
 import com.mentoring.domain.entity.Address;
 import com.mentoring.domain.entity.Phone;
+import com.mentoring.domain.entity.Role;
 import com.mentoring.domain.entity.User;
 import com.mentoring.web.dto.user.UserDto;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +19,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 /**
  * @author ivanovaolyaa
@@ -66,11 +71,13 @@ public class UserConverterTest {
         assertEquals(ADDRESS_STREET_NUM, actualAddress.getStreetNumber());
         assertEquals(ADDRESS_FLAT_NUM, actualAddress.getFlatNumber());
         assertEquals(ADDRESS_POSTAL_CODE, actualAddress.getPostalCode());
+        assertNotNull(actualAddress.getUser());
 
         assertEquals(1, user.getPhones().size());
         final Phone actualPhone = user.getPhones().get(0);
         assertEquals(PHONE_NUMBER, actualPhone.getPhoneNumber());
         assertEquals(Phone.PhoneType.MOBILE, actualPhone.getPhoneType());
+        assertNotNull(actualPhone.getUser());
     }
 
     @Test
@@ -80,6 +87,11 @@ public class UserConverterTest {
         assertEquals(USER_FIRST_NAME, user.getFirstName());
         assertEquals(USER_LAST_NAME, user.getLastName());
         assertEquals(1, user.getAddresses().size());
+        assertEquals(1, user.getRoles().size());
+        for (Role role : user.getRoles()) {
+            assertEquals(Role.USER, role.getRoleName());
+            assertEquals(Role.USER, role.getAuthority());
+        }
     }
 
     @Test
@@ -88,6 +100,11 @@ public class UserConverterTest {
         assertEquals(USER_EMAIL, userDto.getEmail());
         assertEquals(USER_FIRST_NAME, userDto.getFirstName());
         assertEquals(USER_LAST_NAME, userDto.getLastName());
+        assertEquals(1, userDto.getRoles().size());
+        for (Role role : userDto.getRoles()) {
+            assertEquals(Role.USER, role.getRoleName());
+            assertEquals(Role.USER, role.getAuthority());
+        }
     }
 
     private User givenUser() {
@@ -96,6 +113,7 @@ public class UserConverterTest {
         user.setEmail(USER_EMAIL);
         user.setFirstName(USER_FIRST_NAME);
         user.setLastName(USER_LAST_NAME);
+        user.setRoles(givenRoles(Role.USER));
 
         return user;
     }
@@ -108,6 +126,7 @@ public class UserConverterTest {
         userDto.setLastName(USER_LAST_NAME);
         userDto.setAddresses(givenAddresses());
         userDto.setPhones(givenPhones());
+        userDto.setRoles(givenRoles(Role.USER));
 
         return userDto;
     }
@@ -137,6 +156,18 @@ public class UserConverterTest {
         phones.add(phone);
 
         return phones;
+    }
+
+    private Set<Role> givenRoles(final String ... roles) {
+        final Set<Role> roleSet = Sets.newHashSet();
+
+        for (final String r: roles) {
+            final Role role = new Role();
+            role.setRoleName(r);
+            roleSet.add(role);
+        }
+
+        return roleSet;
     }
 
 }

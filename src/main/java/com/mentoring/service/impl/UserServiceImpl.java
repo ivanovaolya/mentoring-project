@@ -1,7 +1,9 @@
 package com.mentoring.service.impl;
 
 import com.google.common.collect.Lists;
+import com.mentoring.domain.entity.Role;
 import com.mentoring.domain.entity.User;
+import com.mentoring.domain.repository.RoleRepository;
 import com.mentoring.domain.repository.UserRepository;
 import com.mentoring.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;

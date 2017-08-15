@@ -5,7 +5,10 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * @author ivanovaolyaa
@@ -41,6 +44,10 @@ public class User {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval=true)
     private List<Phone> phones;
 
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "user_role")
+    private Set<Role> roles = new HashSet<>();
+
     public void addPhone(Phone phone) {
         phones.add(phone);
         phone.setUser(this);
@@ -49,6 +56,10 @@ public class User {
     public void addAddress(Address address) {
         addresses.add(address);
         address.setUser(this);
+    }
+
+    public void addRole(Role role) {
+        roles.add(role);
     }
 
 }
