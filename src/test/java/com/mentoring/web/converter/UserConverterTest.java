@@ -19,6 +19,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 /**
  * @author ivanovaolyaa
@@ -70,11 +71,13 @@ public class UserConverterTest {
         assertEquals(ADDRESS_STREET_NUM, actualAddress.getStreetNumber());
         assertEquals(ADDRESS_FLAT_NUM, actualAddress.getFlatNumber());
         assertEquals(ADDRESS_POSTAL_CODE, actualAddress.getPostalCode());
+        assertNotNull(actualAddress.getUser());
 
         assertEquals(1, user.getPhones().size());
         final Phone actualPhone = user.getPhones().get(0);
         assertEquals(PHONE_NUMBER, actualPhone.getPhoneNumber());
         assertEquals(Phone.PhoneType.MOBILE, actualPhone.getPhoneType());
+        assertNotNull(actualPhone.getUser());
     }
 
     @Test
