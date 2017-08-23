@@ -3,6 +3,7 @@ package com.mentoring.web.dto.user;
 import com.mentoring.domain.entity.Address;
 import com.mentoring.domain.entity.Phone;
 import com.mentoring.domain.entity.Role;
+import com.mentoring.domain.entity.UserDetails;
 
 import lombok.Data;
 import lombok.Getter;
@@ -17,9 +18,6 @@ import java.util.Set;
  * @version 7/14/2017
  */
 @Data
-@Getter
-@Setter
-@ToString
 public class UserDto implements GenericUserDto {
 
     private String email;
@@ -33,5 +31,7 @@ public class UserDto implements GenericUserDto {
     private List<Phone> phones;
 
     private Set<Role> roles;
+
+    private UserDetails userDetails;
 
 }

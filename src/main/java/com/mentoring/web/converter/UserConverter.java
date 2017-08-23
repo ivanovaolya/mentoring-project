@@ -1,8 +1,11 @@
 package com.mentoring.web.converter;
 
+import java.util.Objects;
+
 import com.mentoring.domain.entity.Address;
 import com.mentoring.domain.entity.Phone;
 import com.mentoring.domain.entity.User;
+import com.mentoring.domain.entity.UserDetails;
 import com.mentoring.web.dto.user.GenericUserDto;
 import com.mentoring.web.dto.user.UserDto;
 import org.modelmapper.ModelMapper;
@@ -20,6 +23,7 @@ public class UserConverter implements Converter<User, GenericUserDto> {
 
     @Override
     public User convertToEntity(final GenericUserDto dto) {
+        modelMapper.getConfiguration().setAmbiguityIgnored(true);
         return modelMapper.map(dto, User.class);
     }
 
@@ -45,6 +49,12 @@ public class UserConverter implements Converter<User, GenericUserDto> {
             for (Address a: dto.getAddresses()) {
                 currentEntity.addAddress(a);
             }
+        }
+
+        if (Objects.nonNull(dto.getUserDetails())) {
+            final UserDetails userDetails = dto.getUserDetails();
+            userDetails.setUser(currentEntity);
+            currentEntity.setUserDetails(userDetails);
         }
 
         return currentEntity;
