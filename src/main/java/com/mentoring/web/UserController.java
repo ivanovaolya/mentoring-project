@@ -10,6 +10,7 @@ import com.mentoring.web.dto.user.RegistrationDto;
 import com.mentoring.web.dto.user.UserDto;
 import com.mentoring.web.exception.DuplicateEmailException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
@@ -29,6 +30,7 @@ import java.util.Objects;
 public class UserController {
 
     @Autowired
+    @Qualifier("userJpaService")
     private UserService userService;
 
     @Autowired
