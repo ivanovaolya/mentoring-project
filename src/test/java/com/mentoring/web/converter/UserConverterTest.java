@@ -27,6 +27,7 @@ import static org.junit.Assert.assertNotNull;
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest
+@Ignore
 public class UserConverterTest {
 
     // USER
