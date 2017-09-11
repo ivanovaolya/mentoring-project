@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -36,6 +37,9 @@ public class UserDetails {
 
     @Column(name = "id_number")
     private String identificationNumber;
+
+    @Embedded
+    private Passport passport;
 
     @OneToOne(fetch = FetchType.LAZY)
     @MapsId
