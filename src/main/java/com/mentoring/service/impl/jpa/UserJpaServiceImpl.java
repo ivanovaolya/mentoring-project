@@ -1,4 +1,4 @@
-package com.mentoring.service.impl;
+package com.mentoring.service.impl.jpa;
 
 import java.util.List;
 import java.util.Objects;
