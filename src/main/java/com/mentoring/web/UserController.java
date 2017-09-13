@@ -1,7 +1,6 @@
 package com.mentoring.web;
 
 import com.google.common.collect.Lists;
-import com.mentoring.domain.entity.Role;
 import com.mentoring.domain.entity.User;
 import com.mentoring.service.RoleService;
 import com.mentoring.service.UserService;
@@ -11,9 +10,9 @@ import com.mentoring.web.dto.user.RegistrationDto;
 import com.mentoring.web.dto.user.UserDto;
 import com.mentoring.web.exception.DuplicateEmailException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.annotation.Secured;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.thymeleaf.util.StringUtils;
 
@@ -31,6 +30,7 @@ import java.util.Objects;
 public class UserController {
 
     @Autowired
+    @Qualifier("userJpaService")
     private UserService userService;
 
     @Autowired

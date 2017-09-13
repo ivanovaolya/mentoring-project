@@ -12,7 +12,6 @@ import javax.validation.constraints.Size;
  * @version 7/13/2017
  */
 @Data
-@Getter
 public class RegistrationDto implements GenericUserDto {
 
     @NotNull

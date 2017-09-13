@@ -10,6 +10,7 @@ import com.mentoring.domain.entity.User;
 import com.mentoring.service.UserService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -27,6 +28,7 @@ import org.springframework.stereotype.Component;
 public class CustomAuthenticationProvider implements AuthenticationProvider {
 
     @Autowired
+    @Qualifier("userJpaService")
     private UserService userService;
 
     @Override
@@ -39,11 +41,11 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
         if (Objects.isNull(user)) {
             throw new BadCredentialsException("No user with email '" + email + "'");
         }
-
+//
         if (!user.getPassword().equals(password)) {
             throw new BadCredentialsException("Bad credentials");
         }
-
+//
         final UserDetails userDetails = new org.springframework.security.core.userdetails.User(user.getEmail(),
                 user.getPassword(), user.getRoles());
         final Collection<? extends GrantedAuthority> authorities = userDetails.getAuthorities();
