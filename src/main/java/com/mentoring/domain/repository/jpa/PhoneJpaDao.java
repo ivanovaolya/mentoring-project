@@ -4,16 +4,12 @@ import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.util.List;
 
+import javax.persistence.EntityGraph;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.TypedQuery;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Root;
 
 import com.mentoring.domain.entity.Phone;
 
-import org.hibernate.FetchMode;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -28,7 +24,12 @@ public class PhoneJpaDao implements GenericJpaDao<Phone> {
 
     @Override
     public List<Phone> findAll() {
-        return em.createQuery("select p from Phone p join fetch p.user u").getResultList();
+        EntityGraph<Phone> fetchUser = em.createEntityGraph(Phone.class);
+        fetchUser.addSubgraph("user");
+
+        return em.createQuery("select p from Phone p")
+                .setHint("javax.persistence.fetchgraph", fetchUser)
+                .getResultList();
     }
 
     @Override
