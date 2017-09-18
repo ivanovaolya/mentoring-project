@@ -15,4 +15,4 @@ Deployed a Spring Boot application from GitHub to Heroku.
 Used CleanDB addon for MySql data source.
 App can be found [here](https://mentoring-project-deployment.herokuapp.com/).
 ## API
-You can find API description [here](https://docs.google.com/document/d/1dKUM0iGB4FFoUVxq_iyX7xAUwxa3ZV9clEnSQX88zaw/edit?usp=sharing)
+You can find API description [here](https://github.com/ivanovaolya/mentoring-project/wiki)
