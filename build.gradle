@@ -57,6 +57,7 @@ dependencies {
     compile("org.apache.activemq:activemq-broker")
     compile("com.fasterxml.jackson.core:jackson-databind")
     providedCompile group: 'javax.ejb', name: 'ejb-api', version: '3.0'
+    compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.25'
 }
 
 war {

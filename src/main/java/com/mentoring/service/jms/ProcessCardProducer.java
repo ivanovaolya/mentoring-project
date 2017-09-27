@@ -10,6 +10,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mentoring.web.dto.card.CardDto;
 
 import org.apache.activemq.ActiveMQConnectionFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -26,6 +28,8 @@ public class ProcessCardProducer {
     @Autowired
     private ObjectMapper objectMapper;
 
+    private Logger logger = LoggerFactory.getLogger(ProcessCardProducer.class);
+
     public void submitCardDetails(final CardDto cardDto) throws Exception {
         final Connection connection = jmsConnectionFactory.createConnection();
         connection.start();
@@ -36,9 +40,8 @@ public class ProcessCardProducer {
         final TextMessage message = session.createTextMessage(objectMapper.writeValueAsString(cardDto));
         producer.send(message);
 
-        System.out.println("*** JMS Message sent ***");
-        System.out.println(message.getText());
-        System.out.println();
+        logger.info("*** JMS Message sent ***");
+        logger.info(message.getText());
 
         connection.stop();
     }
