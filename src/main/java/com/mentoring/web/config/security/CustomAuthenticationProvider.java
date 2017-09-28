@@ -28,7 +28,6 @@ import org.springframework.stereotype.Component;
 public class CustomAuthenticationProvider implements AuthenticationProvider {
 
     @Autowired
-    @Qualifier("userJpaService")
     private UserService userService;
 
     @Override

@@ -30,7 +30,6 @@ import java.util.Objects;
 public class UserController {
 
     @Autowired
-    @Qualifier("userJpaService")
     private UserService userService;
 
     @Autowired
