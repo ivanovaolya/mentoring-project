@@ -53,6 +53,10 @@ dependencies {
     testCompile group: 'org.mockito', name: 'mockito-core', version: '2.8.47'
     testCompile group: 'org.springframework', name: 'spring-test', version: '4.3.10.RELEASE'
     testCompile group: 'org.springframework.security', name: 'spring-security-test', version: '4.2.3.RELEASE'
+    compile("org.springframework.boot:spring-boot-starter-activemq")
+    compile("org.apache.activemq:activemq-broker")
+    compile("com.fasterxml.jackson.core:jackson-databind")
+    providedCompile group: 'javax.ejb', name: 'ejb-api', version: '3.0'
 }
 
 war {
