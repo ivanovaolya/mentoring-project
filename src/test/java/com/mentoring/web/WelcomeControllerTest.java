@@ -33,6 +33,6 @@ public class WelcomeControllerTest {
                 .get("/")
                 .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON);
-        mockMvc.perform(requestBuilder).andExpect(view().name("welcome"));
+        mockMvc.perform(requestBuilder).andExpect(view().name("index"));
     }
 }
