@@ -1,7 +1,7 @@
 package com.mentoring.web;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 
 /**
  * @author ivanovaolyaa
@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class WelcomeController {
 
-    @RequestMapping("/")
+    @GetMapping("/")
     public String welcome() {
         return "index";
     }

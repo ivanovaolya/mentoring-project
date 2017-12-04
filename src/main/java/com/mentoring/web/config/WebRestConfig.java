@@ -27,11 +27,4 @@ public class WebRestConfig extends WebMvcConfigurerAdapter {
         return new UserConverter();
     }
 
-    @Override
-    public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry
-                .addResourceHandler("/resources/**")
-                .addResourceLocations("/resources/static/")
-                .addResourceLocations("/resources/js/");
-    }
 }
