@@ -14,7 +14,6 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
-import org.thymeleaf.util.StringUtils;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
@@ -79,7 +78,7 @@ public class UserController {
     }
 
     private boolean isPasswordConfirmed(final RegistrationDto dto) {
-        return StringUtils.equals(dto.getPassword(), dto.getConfirmPassword());
+        return dto.getPassword().equals(dto.getConfirmPassword());
     }
 
 }

@@ -1,5 +1,7 @@
 package com.mentoring.service.impl;
 
+import javax.transaction.Transactional;
+
 import com.mentoring.domain.entity.Card;
 import com.mentoring.domain.repository.CardRepository;
 import com.mentoring.service.CardService;
@@ -18,6 +20,7 @@ public class CardServiceImpl implements CardService {
     private CardRepository cardRepository;
 
     @Override
+    @Transactional
     public void saveCard(final Card card) {
         cardRepository.save(card);
     }
